@@ -1,13 +1,16 @@
+
 from lark import Lark
+
 
 dl_parser = Lark(r"""
     EQUALS: "="
     OPERATOR: /[\+\-\*\/]/
     ALPHANUMERIC: /[a-zA-Z0-9_]+/
-
+    
+    
     statement: tensor EQUALS expr
-    expr: operand (OPERATOR operand)*
-    operand: tensor | INT | FLOAT
+    expr: tensor (operator tensor)*
+    operator: OPERATOR 
     tensor: ALPHANUMERIC index 
     index: "[" [axis ("," axis)*] "]"
     axis: ALPHANUMERIC | INT 
@@ -21,5 +24,6 @@ dl_parser = Lark(r"""
     start='statement'
 )
 
-# Assignment
-print(dl_parser.parse("Y[i, k] = W[i, j] * X[j, k]"))
+
+def parse(s: str):
+    return dl_parser.parse(s)

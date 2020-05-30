@@ -1,0 +1,9 @@
+from dldsl.parser import parse
+from dldsl.transformer import transform
+
+
+def op(s):
+    """
+    Parse string and transform into abstract statement
+    """
+    return transform(parse(s))
