@@ -21,28 +21,10 @@ is equivalent to the following expansion:
 ```python
 # First we construct an output of the provided shape
 output = np.zeros(i, j, l)
-
-# Then, we use nested for loops over 
-# the indices present on the right
-# In our case, this is (i, j, l)
 for _i in range(i):
     for _j in range(j):
         for _l in range(l):
-            # For the remaining axes, we use an 
-            # intermediate variable to compute 
-            # a sum reduction over that axis
-            total = 0
-            for _k in range(k):
-                # In the inner-most loop,
-                # we multiply the indices indicated by the 
-                # left-hand side of the equation
-                #
-                # Our tensor "operands" are the elements on the 
-                # right hand side of the equation
-                total += A[i, j, k] * B[i, k, l]
-            # And finally, set the value at the 
-            # location indicated by the right
-            output[i, j, l] = total
+            output[i, j, l] += A[i, j, k] * B[i, k, l]
 ```
 
 The proposed-syntax of DLDSL allows for generic scalar math to be performed on the operands
