@@ -6,4 +6,5 @@ def op(s):
     """
     Parse string and transform into abstract statement
     """
-    return transform(parse(s))
+    parsed = parse(s)
+    return transform(parsed)

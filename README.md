@@ -1,8 +1,7 @@
-# Deep Learning Domain Specific Language
-
- 
- Define operations that take in tensors and output tensors using a syntax similar to "einsum".
-
+### WARNING: 
+I have no idea what I'm doing but had fun with this regardless.  
+I've made no attempts to make this fast and currently only uses numpy as a backed.
+Don't actually use this please.
 
 # Motivation
 
@@ -19,12 +18,12 @@ tf.einsum(`ijk,ikl->ijl`, A, B)
 
 is equivalent to the following expansion:
 ```python
-# First we construct an output of the provided shape
-output = np.zeros(i, j, l)
-for _i in range(i):
-    for _j in range(j):
-        for _l in range(l):
-            output[i, j, l] += A[i, j, k] * B[i, k, l]
+output = np.zeros(I, J, L)
+for i in range(I):
+    for j in range(J):
+        for k in range(K):
+            for l in range(L):
+                output[i, j, l] += A[i, j, k] * B[i, k, l]
 ```
 
 The proposed-syntax of DLDSL allows for generic scalar math to be performed on the operands
@@ -53,9 +52,9 @@ Y = W[i] * W[i]
 # Y = np.trace(W)
 ``` 
 
-### Or something arbitrarily complexB
+### Or something arbitrarily complex
 ```
-Y[batch, hidden] = X[batch, hidden] * W[hidden, output] + B[output]
+Output[batch, output] = (Input[batch, hidden] + ExampleBias[batch]) * Weight[hidden, output] + OutputBias[output] 
 ```
 
 

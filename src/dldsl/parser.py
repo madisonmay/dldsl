@@ -4,13 +4,27 @@ from lark import Lark
 
 dl_parser = Lark(r"""
     EQUALS: "="
-    OPERATOR: /[\+\-\*\/]/
+
     ALPHANUMERIC: /[a-zA-Z0-9_]+/
     
-    
     statement: tensor EQUALS expr
-    expr: tensor (operator tensor)*
-    operator: OPERATOR 
+
+    expr: atom | sum | product
+
+    sum: (product | atom) addsub+
+
+    addsub: "+" (product | atom)
+          | "-" (product | atom) -> neg
+
+    product: atom divmul+
+
+    divmul: "*" atom 
+          | "/" atom -> inv
+
+    atom: tensor           
+        | "-" tensor -> neg
+        | "(" expr ")"
+    
     tensor: ALPHANUMERIC index 
     index: "[" [axis ("," axis)*] "]"
     axis: ALPHANUMERIC | INT 

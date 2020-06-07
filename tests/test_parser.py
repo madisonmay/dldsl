@@ -10,7 +10,7 @@ def test_matmul_parse():
 
 
 def test_more_complex_statement():
-    op = "Y[batch, out] = W[hidden, out] * X[batch, hidden]  + B[out]"
+    op = "Y[batch, out] = W[hidden, out] * X[batch, hidden] + B[out]"
     result = parse(op)
     assert isinstance(result, Tree)
 
