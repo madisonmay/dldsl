@@ -45,13 +45,6 @@ Y[i, j] = A[i] + B[j]
 # Y = np.expand_dims(A, 1) + np.expand_dims(1, B)
 ```
 
-### Trace
-```
-Y = W[i] * W[i]
-# W = np.random.rand(i)
-# Y = np.trace(W)
-``` 
-
 ### Or something arbitrarily complex
 ```
 Output[batch, output] = (Input[batch, hidden] + ExampleBias[batch]) * Weight[hidden, output] + OutputBias[output] 
