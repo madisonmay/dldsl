@@ -11,7 +11,7 @@ correspond to sum reductions over tensor products.
 The `dldsl` package intends to introduce a new einsum-like syntax capable of expressing a broader
 ranger of operations than einsum alone.
 
-To illustrate, the computation beformed by the following einsum call:
+To illustrate, the computation peformed by the following einsum call:
 ```
 tf.einsum(`ijk,ikl->ijl`, A, B)
 ```
