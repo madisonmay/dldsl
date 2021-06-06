@@ -1,6 +1,6 @@
 ### WARNING: 
 I have no idea what I'm doing but had fun with this regardless.  
-I've made no attempts to make this fast and currently only uses numpy as a backed.
+I've made no attempts to make this fast and currently only uses numpy as a backend.
 Don't actually use this please.
 
 # Motivation
