@@ -56,7 +56,7 @@ Output[batch, output] = (Input[batch, hidden] + ExampleBias[batch]) * Weight[hid
 import dldsl as dl
 
 op = dl.compile(
-    "Y[batch, hidden] = X[batch, hidden] * W[hidden, output] + B[output]"
+    "Y[batch, output] = X[batch, hidden] * W[hidden, output] + B[output]"
 )
 Y = op(X=X, W=W, B=B) 
 ```
