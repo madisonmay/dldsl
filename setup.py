@@ -18,6 +18,6 @@ setup(
         "lark-parser==0.8.5"
     ],
     tests_require=[
-        "pytest==5.4.1"
+        "pytest==9.0.3"
     ]
 )
